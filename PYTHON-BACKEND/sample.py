@@ -57,7 +57,22 @@ X=pickle.load(pickle_in)
 #print(X[:5])
 
 nbrs = NearestNeighbors(n_neighbors=5).fit(X[:3600])
-print(nbrs.kneighbors([t]))
+knb = nbrs.kneighbors([t],return_distance=False)
+
+music_values = music_data.values
+artist_name = []
+album_name = []
+song_name = []
+
+for i in knb[0]:
+    artist_name.append(music_values[i][2])
+    album_name.append(music_values[i][21])
+    song_name.append(music_values[i][33])
+
+
+#Recommended songs
+for i in range(0,5):
+    print(artist_name[i],",",album_name[i],",",song_name[i])
 
 """
 artist.hotttnesss 0
