@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar.component';
 import { ArtistComponent } from './artist.component';
 import { AlbumComponent } from './album.component';
 import {SpotifyService} from './spotify.service';
+import {RecommendationComponent} from './recommendation.component';
 
 
 const appRoutes: Routes = [
@@ -17,7 +18,8 @@ const appRoutes: Routes = [
   { path: '', component: SearchComponent },
   { path: 'about', component: AboutComponent },
   { path: 'artist/:id',component: ArtistComponent},
-  { path: 'album/:id',component: AlbumComponent}
+  { path: 'album/:id',component: AlbumComponent},
+  {path: 'recommendation',component:RecommendationComponent}
 ];
 
 
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
                   NavbarComponent,
                   SearchComponent,
                   ArtistComponent,
-                  AlbumComponent 
+                  AlbumComponent ,
+                  RecommendationComponent
                 ],
   providers: [SpotifyService],
   bootstrap:    [ AppComponent ]

@@ -14,12 +14,21 @@ var SearchComponent = (function () {
     function SearchComponent(_spotifyservice) {
         this._spotifyservice = _spotifyservice;
         this.searchStr = "";
+        this.recommendations = [];
     }
     SearchComponent.prototype.searchMusic = function () {
         var _this = this;
         this._spotifyservice.searchMusic(this.searchStr)
             .subscribe(function (res) {
             _this.searchRes = res.artists.items;
+        });
+        this._spotifyservice.getArtist()
+            .subscribe(function (res) {
+            _this.recommendations = res;
+        });
+        this._spotifyservice.postArtist()
+            .subscribe(function (error) {
+            console.error("Error saving food!");
         });
     };
     return SearchComponent;

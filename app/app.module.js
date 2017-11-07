@@ -20,11 +20,13 @@ var navbar_component_1 = require("./navbar.component");
 var artist_component_1 = require("./artist.component");
 var album_component_1 = require("./album.component");
 var spotify_service_1 = require("./spotify.service");
+var recommendation_component_1 = require("./recommendation.component");
 var appRoutes = [
     { path: '', component: search_component_1.SearchComponent },
     { path: 'about', component: about_component_1.AboutComponent },
     { path: 'artist/:id', component: artist_component_1.ArtistComponent },
-    { path: 'album/:id', component: album_component_1.AlbumComponent }
+    { path: 'album/:id', component: album_component_1.AlbumComponent },
+    { path: 'recommendation', component: recommendation_component_1.RecommendationComponent }
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -43,7 +45,8 @@ AppModule = __decorate([
             navbar_component_1.NavbarComponent,
             search_component_1.SearchComponent,
             artist_component_1.ArtistComponent,
-            album_component_1.AlbumComponent
+            album_component_1.AlbumComponent,
+            recommendation_component_1.RecommendationComponent
         ],
         providers: [spotify_service_1.SpotifyService],
         bootstrap: [app_component_1.AppComponent]
