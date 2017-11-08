@@ -1,3 +1,4 @@
+from flask import request, Response, render_template, send_from_directory
 from flask import Flask,jsonify
 from flask import abort
 from flask import make_response
@@ -9,6 +10,12 @@ import numpy as np
 import pandas as pd
 import sklearn
 from sklearn.neighbors import NearestNeighbors
+from gevent import monkey
+from gevent.pywsgi import WSGIServer
+
+monkey.patch_all(aggressive=False)
+
+import subprocess
 
 app = Flask(__name__)
 
@@ -65,4 +72,6 @@ def create_task():
 
 
 if __name__ == "__main__":
-	app.run(debug = True)
+	app.run(host="0.0.0.0", debug = True)
+	http_server = WSGIServer(app)
+	http_server.serve_forever()
