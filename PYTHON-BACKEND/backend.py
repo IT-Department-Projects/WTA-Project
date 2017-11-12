@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 import sklearn
 from sklearn.neighbors import NearestNeighbors
+import re
 
 app = Flask(__name__)
 
@@ -54,10 +55,17 @@ def create_task():
 			song_name.append(music_values[i][33])
 
 		for i in range(0,5):
+			
+			update_name=re.sub(r"\s+", '+', artist_name[i])
+			update_album=re.sub(r"\s+", '+', album_name[i])
+			update_song=re.sub(r"\s+", '+', song_name[i])
+			helper_url="https://www.youtube.com/results?search_query="+update_name+"+"+update_album+"+"+update_song
+			
 			recommender={
 				'Artist_name':artist_name[i],
 				'Album_name':album_name[i],
-				'Song_name':song_name[i]
+				'Song_name':song_name[i],
+				'helper_url':helper_url
 			}
 			recommendation.append(recommender)
 		return jsonify(recommendation)
