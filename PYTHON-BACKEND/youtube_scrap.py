@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Nov 12 18:24:49 2017
-
-@author: Aniket
-"""
-
 import bs4,requests
 query = "query"
 UrL = "https://www.youtube.com/results?search_query="+query
